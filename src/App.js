@@ -18,8 +18,10 @@ function App(props) {
       <div>
         <Layout>
           <Routes>
-            <Route path="/" element={<BurgerBuilder />} />
-            {/* <Route
+            <Route path="/react-burger" element={<App />}>
+              <Route index element={<BurgerBuilder />} />
+
+              {/* <Route
               path="users"
               element={
                 signedState ? (
@@ -29,14 +31,15 @@ function App(props) {
                 )
               }
             /> */}
-            {isSigned ? (
-              <Route path="users/:userId" element={<Profile />} />
-            ) : (
-              <Route path="users/" element={<SignInUp />}>
-                <Route index element={<SingUp />} />
-                <Route path="signin" element={<SignIn />} />
-              </Route>
-            )}
+              {isSigned ? (
+                <Route path="users/:userId" element={<Profile />} />
+              ) : (
+                <Route path="users/" element={<SignInUp />}>
+                  <Route index element={<SingUp />} />
+                  <Route path="signin" element={<SignIn />} />
+                </Route>
+              )}
+            </Route>
           </Routes>
         </Layout>
       </div>
