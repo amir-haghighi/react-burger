@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Layout from "./components/Layout/Layout";
+import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder";
+import { Component, createRef, useRef, useState } from "react";
+import Profile from "./containers/user/Profile";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import SignInUp from "./containers/user/signInUp/SignInUp";
+import SingUp from "./containers/user/signInUp/SignUp";
+import SignIn from "./containers/user/signInUp/SignIn";
+import { useSelector } from "react-redux";
+//import * as actionTypes from "./store/actions/actions";
 
-function App() {
+function App(props) {
+  const isSigned = useSelector((state) => state.isSigned);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<BurgerBuilder />} />
+            {/* <Route
+              path="users"
+              element={
+                signedState ? (
+                  <Navigate to="profile" />
+                ) : (
+                  <Navigate to="signup" />
+                )
+              }
+            /> */}
+            {isSigned ? (
+              <Route path="users/:userId" element={<Profile />} />
+            ) : (
+              <Route path="users/" element={<SignInUp />}>
+                <Route index element={<SingUp />} />
+                <Route path="signin" element={<SignIn />} />
+              </Route>
+            )}
+          </Routes>
+        </Layout>
+      </div>
+    </Router>
   );
 }
 

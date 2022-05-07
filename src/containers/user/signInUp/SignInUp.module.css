@@ -1,0 +1,29 @@
+.Center {
+  display: block;
+  margin: 1rem 5vw;
+  justify-content: center;
+  text-align: center;
+}
+.Center > * {
+  display: block;
+  margin: 1rem auto;
+  text-align: center;
+  justify-content: center;
+}
+.Signs {
+  display: flex;
+
+  justify-content: center;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+}
+.NotActive {
+  text-align: center;
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+}
+.Active {
+  background-color: rgb(200, 200, 200);
+  text-align: center;
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+}
