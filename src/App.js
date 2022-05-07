@@ -18,6 +18,7 @@ function App(props) {
       <div>
         <Layout>
           <Routes>
+     <Route path="/burger-react-deploy" element={<BurgerBuilder />} />
             <Route path="/" element={<BurgerBuilder />} />
             {/* <Route
               path="users"
