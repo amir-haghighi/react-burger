@@ -14,14 +14,13 @@ import { useSelector } from "react-redux";
 function App(props) {
   const isSigned = useSelector((state) => state.isSigned);
   return (
-    <Router>
+    <Router basename="/react-burger">
       <div>
         <Layout>
           <Routes>
-            <Route path="/react-burger" element={<App />}>
-              <Route index element={<BurgerBuilder />} />
+            <Route path="/" element={<BurgerBuilder />} />
 
-              {/* <Route
+            {/* <Route
               path="users"
               element={
                 signedState ? (
@@ -31,15 +30,14 @@ function App(props) {
                 )
               }
             /> */}
-              {isSigned ? (
-                <Route path="users/:userId" element={<Profile />} />
-              ) : (
-                <Route path="users/" element={<SignInUp />}>
-                  <Route index element={<SingUp />} />
-                  <Route path="signin" element={<SignIn />} />
-                </Route>
-              )}
-            </Route>
+            {isSigned ? (
+              <Route path="users/:userId" element={<Profile />} />
+            ) : (
+              <Route path="users/" element={<SignInUp />}>
+                <Route index element={<SingUp />} />
+                <Route path="signin" element={<SignIn />} />
+              </Route>
+            )}
           </Routes>
         </Layout>
       </div>

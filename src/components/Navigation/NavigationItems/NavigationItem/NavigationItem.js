@@ -4,6 +4,7 @@ const NavigationItem = (props) => (
   <li className={Classes.NavigationItem}>
     <NavLink
       to={props.link}
+      replace={true}
       className={(navData) => (navData.isActive ? Classes.active : "")}
     >
       {props.children}
